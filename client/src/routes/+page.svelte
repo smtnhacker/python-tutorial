@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
 
+    let SERVER_HOST = "https://python-tutorial-ksk5.onrender.com"
+
     let file;
     let fileInput;
     let output = '';
@@ -9,7 +11,7 @@
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch('http://localhost:8000/ask_question/', {
+        const response = await fetch(`${SERVER_HOST}/ask_question/`, {
             method: 'POST',
             body: formData
         });
