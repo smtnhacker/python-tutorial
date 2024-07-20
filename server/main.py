@@ -15,7 +15,8 @@ import lib.prompts as prompts
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://python-tutorial-client.onrender.com"
 ]
 
 if CLIENT_HOST := os.environ.get("CLIENT_HOST", ""):
