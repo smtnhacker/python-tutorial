@@ -17,6 +17,9 @@ origins = [
     "http://localhost:5173"
 ]
 
+if CLIENT_HOST := os.environ.get("CLIENT_HOST", ""):
+    origins.append(CLIENT_HOST)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
