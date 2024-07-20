@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -74,3 +75,7 @@ async def ask_question(file: UploadFile = File(...)):
         return message.choices[0].message.content
     except Exception as e:
         return e
+
+if __name__ == "__main__":
+    PORT = os.environ.get("PORT", 8000)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
