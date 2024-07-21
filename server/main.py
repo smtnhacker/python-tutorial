@@ -4,13 +4,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import uvicorn
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, HTTPException, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from openai import OpenAI
 
 from lib.dynamic_module import load_module_from_code
 import lib.prompts as prompts
+import lib.auth as auth
 
 app = FastAPI()
 
@@ -42,17 +44,22 @@ async def upload_file(file: UploadFile = File(...)):
     content = await file.read()
     return JSONResponse(content={"filename": file.filename, "content": content.decode("utf-8")})
 
-@app.post("/uploadcode")
-async def upload_code(file: UploadFile = File(...)):
-    content = await file.read()
+class User(BaseModel):
+    username: str
+    password: str
 
-    # do something to the code
-    source_code = content.decode("utf-8")
-    new_module = load_module_from_code(source_code)
-    try:
-        return new_module.say_hi()
-    except Exception as e:
-        return e
+@app.post("/login")
+def login(user: User):
+    user_id = auth.authenticate_user(user.username, user.password)
+    if user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Bearer"}
+        )
+    return {
+        "userId": user_id
+    }
 
 @app.post("/ask_question")
 async def ask_question(file: UploadFile = File(...)):

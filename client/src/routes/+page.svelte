@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-
-    let SERVER_HOST = "https://python-tutorial-ksk5.onrender.com"
+    import { SERVER_HOST } from '../lib/config';
 
     let file;
     let fileInput;
