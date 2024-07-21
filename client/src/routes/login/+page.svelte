@@ -1,4 +1,5 @@
 <script>
+    import { goto } from "$app/navigation"
     import { userId } from "../../lib/stores/auth"
     import { SERVER_HOST } from "../../lib/config"
 
@@ -23,13 +24,14 @@
             const data = await response.json();
             console.log(data)
             $userId = data["userId"];
+            goto('/')
         } else {
             alert("Invalid credentials");
         }
     }
 
     function logout() {
-        $userId = false
+        $userId = ''
     }
 </script>
 
