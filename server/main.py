@@ -61,6 +61,34 @@ def login(user: User):
         "userId": user_id
     }
 
+@app.get("/io")
+def gen_io_testcase():
+    try:
+        message = openai_client.chat.completions.create(
+            temperature=0.6,
+            top_p=1,    
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompts.gen_io_testcase()
+                }
+            ],
+            model="gpt-4o-mini"
+        )
+
+        res = message.choices[0].message.content
+        if res.startswith("```plaintext"):
+            res = res.split("\n")[1:-1]
+
+        lines = res.split("\n")
+        print(lines[0])
+        if len(lines) == 1:
+            return JSONResponse(content={"testcase": res, "answer": "None Given"})
+        else:
+            return JSONResponse(content={"testcase": lines[0], "answer": "\n".join(lines[1:])})
+    except Exception as e:
+        return e
+
 @app.post("/ask_question")
 async def ask_question(file: UploadFile = File(...)):
     content = await file.read()
@@ -71,6 +99,7 @@ async def ask_question(file: UploadFile = File(...)):
     try:
         question = new_module.ask_question()
         message = openai_client.chat.completions.create(
+            temperature=1,
             messages=[
                 {
                     "role": "user",

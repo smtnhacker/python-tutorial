@@ -1,4 +1,6 @@
 <script>
+	import { marked } from 'marked';
+    import { SERVER_HOST } from '../../lib/config';
     import IoItem from './IOItem.svelte';
 
     const inputItems = [
@@ -22,7 +24,7 @@
         },
         {
             title: "Dynamic-Amount Multiple Integer",
-            code: "`numbers = map(int, input().split())`",
+            code: "`numbers = list(map(int, input().split()))`",
             description: "This takes in an \"unknown\" amount of integers and saves them into a single list variable.",
             example: "`1 2 3 4 5 6 7 8 9`"
         }
@@ -48,13 +50,25 @@
             example: "If `a_list=[1,2,3,\"a\",\"b\"]`, then `print(*a_list)` will result to `1 2 3 a b`"
         }
     ]
+
+    let question = '';
+    let answer = '';
+    let showAnswer = false;
+
+    async function get_sample() {
+        const response = await fetch(`${SERVER_HOST}/io`);
+        const result = await response.json();
+        console.log(result)
+        question = result["testcase"];
+        answer = result["answer"];
+    }
 </script>
 
 <div>
     <div>
         IO Page
     </div>
-    <p>In Python, you take input one line at a time. This can be confusing at first which is why here are some common ways to take input. You don't have to know the details on how each works right now. Just familiarize them until you are able to dissect how each works.</p>
+    <p>In Python, you take input one line at a time. This can be confusing at first which is why here are some common ways to take input. You don't have to know the details on how each works right now. Just familiarize them until you are able to dissect how each works. Note that inputs can be a lot more complex and may need better understanding of python</p>
     <div>
         {#each inputItems as {title, code, description, example}}
             <li>
@@ -69,5 +83,15 @@
                 <IoItem title={title} code={code} description={description} example={example} />
             </li>
         {/each}
+    </div>
+    <div>
+        <h1>Test Yourself</h1>
+        <button on:click={get_sample}>Generate Problem</button>
+        {@html marked(question)}
+        Show Answer (likely incorrect): <input type="checkbox" bind:checked={showAnswer}>
+        {#if showAnswer}
+            Answer:
+            {@html marked(answer)}
+        {/if}
     </div>
 </div>
