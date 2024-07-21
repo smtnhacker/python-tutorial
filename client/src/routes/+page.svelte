@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import { userId } from '../lib/stores/auth';
     import { SERVER_HOST } from '../lib/config';
 
     let file;
@@ -21,14 +20,6 @@
         console.log(result);
         output = result;
     }
-
-    onMount(() => {
-        userId.subscribe(val => {
-            if (!val) {
-                goto('/login')
-            } 
-        });
-    });
 </script>
 
 <form on:submit|preventDefault={uploadFile}>
