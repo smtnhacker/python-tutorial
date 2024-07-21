@@ -1,0 +1,71 @@
+<script>
+    import { SERVER_HOST } from '../../lib/config';
+	import { marked } from 'marked';
+
+    let file;
+    let fileInput;
+    let output = '';
+
+    async function uploadFile() {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch(`${SERVER_HOST}/ask_question/`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        console.log(result);
+        output = result;
+    }
+
+    const examples = [
+        `
+def sum(a: int, b :int) -> int:
+    return a+b
+        `,
+        `
+def say_hi():
+    print("hi!")
+        `,
+        `
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
+        `
+    ]
+</script>
+
+<div>
+    <div>Functions</div>
+    <p>Often, there are set of instructions that you'll reuse at different parts of the program. Instead of manually copy-pasting these code and possibly make your code harder to debug and maintain, you can use Python's functions. They have the following format:</p>
+    <div>{@html marked("```python\ndef function_name(parameter1: type, parameter2: type) -> return_type:\n\t# function logic\n\treturn value")}</div>
+    <div>Here are some examples:</div>
+    <div>
+        {#each examples as example}
+            {@html marked(`\`\`\`python${example}`)}
+        {/each}
+    </div>
+    <p>For this activity, since we have not yet covered other parts of Python, you'll just be tasked with defining a function that returns a proper question. It should follow the following template:</p>
+    <div>{@html marked("```python\ndef ask_question():\n\t# function logic\n\treturn \"Some question?\"")}</div>
+</div>
+<form on:submit|preventDefault={uploadFile}>
+    <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
+    <button type="submit">Upload</button>
+    <p>Result: {output}</p>
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+</style>
