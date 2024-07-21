@@ -27,19 +27,31 @@
             alert("Invalid credentials");
         }
     }
+
+    function logout() {
+        $userId = false
+    }
 </script>
 
-<div class="login">
-    <h1>Login</h1>
-    <form on:submit={login}>
-        <label for="username">
-            Username:
-            <input type="text" name="username" bind:value={username}>
-        </label>
-        <label for="password">
-            Key:
-            <input type="text" name="password" bind:value={password}>
-        </label>
-        <input type="submit" value="submit">
-    </form>
+<div>
+    {#if !$userId}
+        <div class="login">
+            <h1>Login</h1>
+            <form on:submit={login}>
+                <label for="username">
+                    Username:
+                    <input type="text" name="username" bind:value={username}>
+                </label>
+                <label for="password">
+                    Key:
+                    <input type="text" name="password" bind:value={password}>
+                </label>
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    {:else}
+        <div class="logout">
+            <button on:click={logout}>Logout</button>
+        </div>
+    {/if}
 </div>
