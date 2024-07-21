@@ -19,10 +19,12 @@
             DCS Bootcamp 11.0: Python Basics Crash-Course
         </div>
         <ul>
-            <li>Home</li>
-            <li>IO</li>
+            <li><button on:click={() => goto('/')}>Home</button></li>
+            <li><button on:click={() => goto('/io')}>IO</button></li>
         </ul>
     </nav>
 </div>
 
 <slot />
+
+<footer>Made by Ron Surara 2024</footer>
