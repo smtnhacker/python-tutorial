@@ -4,12 +4,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import io
 import uvicorn
-from fastapi import FastAPI, File, UploadFile, HTTPException, status
+from fastapi import FastAPI, Response, File, UploadFile, HTTPException, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
+import matplotlib.pyplot as plt
 
 from lib.dynamic_module import load_module_from_code
 import lib.prompts as prompts
@@ -122,6 +124,28 @@ async def ask_question(file: UploadFile = File(...)):
         return message.choices[0].message.content
     except Exception as e:
         return e
+
+@app.post("/generate_graph", responses={200: {"content": {"image/png": {}}}}, response_class=Response)
+async def generate_graph(file: UploadFile = File(...)):
+    content = await file.read()
+
+    source_code = content.decode("utf-8")
+    new_module = load_module_from_code(source_code)
+    try:
+        xrange = list(range(1,100))
+        yrange = [new_module.compute_y(x) for x in xrange]
+        plt.figure()
+        plt.plot(xrange, yrange)
+        buf = io.BytesIO()
+        plt.savefig(buf, format="png")
+        buf.seek(0)
+        return Response(content=buf.getvalue(), media_type="image/png")
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Server cannot run code: {e}",
+            headers={"WWW-Authenticate": "Bearer"}
+        ) 
 
 if __name__ == "__main__":
     PORT = os.environ.get("PORT", 8000)

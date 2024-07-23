@@ -1,5 +1,6 @@
 <script>
     import { marked } from 'marked'
+    import { SERVER_HOST } from '../../lib/config';
     import OperatorExample from './OperatorExample.svelte';
 
     let examples = [
@@ -44,6 +45,26 @@
             examples: ["squared=n**2", "sqrt_root=n**0.5", "result=e**(alpha*k)"]
         }
     ]
+
+    let file;
+    let fileInput;
+    let output = '';
+
+    async function uploadFile() {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch(`${SERVER_HOST}/generate_graph`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.blob();
+        const imageURL = URL.createObjectURL(result)
+        console.log(imageURL);
+        output = imageURL;
+    }
+
 </script>
 
 <div>
@@ -75,4 +96,15 @@
             </ul>
         </div>
     </div>
+    <p>
+        To further help in understanding operators, you can make a function that takes in a single integer x and returns a valid number and submit the function. A graph will be generated plotting the results of the function for x values 1 to 100. Use the following template:a
+    </p>
+    <div>{@html marked("```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)")}</div>
+    <form on:submit|preventDefault={uploadFile}>
+        <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
+        <button type="submit">Upload</button>
+        <p>Result:
+            <img src={output} alt="Resulting Graph">
+        </p>
+    </form>
 </div>
