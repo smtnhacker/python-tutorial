@@ -4,6 +4,12 @@
     import { userId } from '../lib/stores/auth';
     import "../app.css";
 
+    const pages = [
+        { url: "/", title: "Home" },
+        { url: "/io", title: "IO" },
+        { url: "/functions", title: "Functions" }
+    ]
+
     onMount(() => {
         userId.subscribe(val => {
             if (!val) {
@@ -19,8 +25,9 @@
             DCS Bootcamp 11.0: Python Basics Crash-Course
         </div>
         <ul>
-            <li><button on:click={() => goto('/')}>Home</button></li>
-            <li><button on:click={() => goto('/io')}>IO</button></li>
+            {#each pages as page}
+                <li><button on:click={() => goto(page.url)}>{page.title}</button></li>
+            {/each}
         </ul>
     </nav>
 </div>
