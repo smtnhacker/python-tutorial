@@ -66,6 +66,10 @@
     }
 
     const line_intersection_template = `
+# these 4 are just utility functions that can help
+# make your code cleaner, but are not required
+# to do this exercise
+
 def get_product_def(p1, q1, p2, q2):
     "A utility function to minimize confusing expressions"
     return p1*q2 - p2*q1
@@ -81,6 +85,10 @@ def get_bc(b1, c1, b2, c2):
 def get_ca(c1, a1, c2, a2):
     # fill in this function
     return 0
+
+# these functions are what matters here
+# you can use whatever method you want
+# just make sure that these two works
 
 def get_x(a1, b1, c1, a2, b2, c2):
     # use the formula to compute this
