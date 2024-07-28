@@ -8,7 +8,8 @@
         { url: "/", title: "Home" },
         { url: "/io", title: "IO" },
         { url: "/functions", title: "Functions" },
-        { url: "/operations", title: "Operations" }
+        { url: "/operations", title: "Operations" },
+        { url: "/flow", title: "Flow, Loops, and Lists" }
     ]
 
     onMount(() => {
