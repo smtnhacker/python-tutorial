@@ -19,6 +19,10 @@
             } 
         });
     });
+
+    function logout() {
+        $userId = ''
+    }
 </script>
 
 <div class="p-4">
@@ -31,6 +35,11 @@
             {#each pages as page}
                 <li><button on:click={() => goto(page.url)}>{page.title}</button></li>
             {/each}
+            <li><button on:click={logout}>Logout</button></li>
+        </ul>
+        {:else}
+        <ul>
+            <li><button on:click={() => goto("/login")}>Login</button></li>
         </ul>
         {/if}
     </nav>
