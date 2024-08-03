@@ -8,9 +8,9 @@
 </script>
 
 <div>
-    <div>{title}</div>
-    <div>{@html marked(code)}</div>
-    <div>{description}</div>
-    Example:
-    <div>{@html marked(example)}</div>
+    <div class="font-semibold">{title}</div>
+    <div class="pl-4">{@html marked(code)}</div>
+    <div class="pl-4">{description}</div>
+    <div class="font-semibold highlight">Example:</div>
+    <div class="pl-4">{@html marked(example)}</div>
 </div>
