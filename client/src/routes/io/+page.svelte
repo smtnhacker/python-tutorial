@@ -65,7 +65,7 @@
 </script>
 
 <div class="flex justify-center content-stretch">
-    <div class="flex bg-white rounded-2xl w-10/12 text-black">
+    <div class="flex bg-white rounded-2xl w-7/12 text-black">
         <div></div>
         <div class="flex flex-col items-center grow">
             <h2 class="text-5xl my-4 font-semibold text-[var(--red-color)]">I/O</h2>

@@ -35,8 +35,8 @@
         {/if}
     </nav>
     <header class="flex flex-col items-center">
-        <h1 class="text-5xl mb-2 font-semibold highlight">DCS Bootcamp 11.0</h1>
-        <div class="text-2xl">Python Basics Crash Course</div>
+        <h1 class="text-5xl mb-2 voyage-bold highlight">DCS Bootcamp 11.0</h1>
+        <div class="text-xl montserrat-ital">Python Basics Crash Course</div>
         <ul class="flex flex-col m-8">
         {#each pages as page, index}
             <button on:click={() => goto(page.url)} class={`my-1 py-1 px-8 rounded-lg text-xl font-semibold hover:bg-stone-800 ${index%2 ? 'highlight' : ''}`}>{page.title}</button>
@@ -50,6 +50,26 @@
 </div>
 
 <style>
+    @font-face {
+        font-family: 'VoyageBold';
+        src: url('/fonts/Voyage-bold.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: 'VoyageReg';
+        src: url('/fonts/Voyage-regular.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: 'MontserratVariableReg';
+        src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'MontserratVariableItal';
+        src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    }
+
     :root {
         --highlight-color: rgb(195, 160, 79);
         --red-color: rgb(178, 34, 34);
@@ -57,5 +77,21 @@
 
     .highlight {
         color: var(--highlight-color);
+    }
+
+    .voyage {
+        font-family: 'VoyageReg', sans-serif;
+    }
+
+    .voyage-bold {
+        font-family: 'VoyageBold', sans-serif;
+    }
+
+    .montserrat {
+        font-family: 'MontserratVariableReg', sans-serif;
+    }
+
+    .montserrat-ital {
+        font-family: 'MontserratVariableItal', sans-serif;
     }
 </style>
