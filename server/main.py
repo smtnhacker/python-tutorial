@@ -69,7 +69,7 @@ def login(user: User):
     }
 
 testcases_cache = set()
-MAX_IO_CACHE_SIZE = os.environ.get("MAX_IO_CACHE_SIZE", 30)
+MAX_IO_CACHE_SIZE = int(os.environ.get("MAX_IO_CACHE_SIZE", 30))
 
 @app.get("/io")
 def gen_io_testcase():
