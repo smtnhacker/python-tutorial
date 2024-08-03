@@ -37,3 +37,12 @@
 .montserrat-ital {
     font-family: 'MontserratVariableItal', sans-serif;
 }
+
+:root {
+    --highlight-color: rgb(195, 160, 79);
+    --red-color: rgb(178, 34, 34);
+}
+
+.highlight {
+    color: var(--highlight-color);
+}

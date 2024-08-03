@@ -48,14 +48,3 @@
 
     <footer class="m-2 flex justify-center">Made by Ron Surara 2024</footer>
 </div>
-
-<style>
-    :root {
-        --highlight-color: rgb(195, 160, 79);
-        --red-color: rgb(178, 34, 34);
-    }
-
-    .highlight {
-        color: var(--highlight-color);
-    }
-</style>
