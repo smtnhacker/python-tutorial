@@ -50,26 +50,6 @@
 </div>
 
 <style>
-    @font-face {
-        font-family: 'VoyageBold';
-        src: url('/fonts/Voyage-bold.otf') format('opentype');
-    }
-
-    @font-face {
-        font-family: 'VoyageReg';
-        src: url('/fonts/Voyage-regular.otf') format('opentype');
-    }
-
-    @font-face {
-        font-family: 'MontserratVariableReg';
-        src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'MontserratVariableItal';
-        src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
-    }
-
     :root {
         --highlight-color: rgb(195, 160, 79);
         --red-color: rgb(178, 34, 34);
@@ -77,21 +57,5 @@
 
     .highlight {
         color: var(--highlight-color);
-    }
-
-    .voyage {
-        font-family: 'VoyageReg', sans-serif;
-    }
-
-    .voyage-bold {
-        font-family: 'VoyageBold', sans-serif;
-    }
-
-    .montserrat {
-        font-family: 'MontserratVariableReg', sans-serif;
-    }
-
-    .montserrat-ital {
-        font-family: 'MontserratVariableItal', sans-serif;
     }
 </style>

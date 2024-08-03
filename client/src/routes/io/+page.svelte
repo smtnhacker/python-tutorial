@@ -68,7 +68,7 @@
     <div class="flex bg-white rounded-2xl w-7/12 text-black">
         <div></div>
         <div class="flex flex-col items-center grow">
-            <h2 class="text-5xl my-4 font-semibold text-[var(--red-color)]">I/O</h2>
+            <h2 class="text-5xl my-4 voyage-bold text-[var(--red-color)]">I/O</h2>
             <div class="border-solid border-8 border-black mx-14 mb-14 p-4 rounded-lg">
                 <p>In Python, you take input one line at a time. This can be confusing at first which is why here are some common ways to take input. You don't have to know the details on how each works right now. Just familiarize them until you are able to dissect how each works. Note that inputs can be a lot more complex and may need better understanding of python</p>
                 <div>
