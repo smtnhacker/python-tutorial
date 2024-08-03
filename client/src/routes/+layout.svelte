@@ -5,7 +5,7 @@
     import "../app.css";
 
     const pages = [
-        { url: "/", title: "Home" },
+        // { url: "/", title: "Home" },
         { url: "/io", title: "IO" },
         { url: "/functions", title: "Functions" },
         { url: "/operations", title: "Operations" },
@@ -25,26 +25,36 @@
     }
 </script>
 
-<div class="p-4">
-    <nav>
-        <div class="title font-bold text-5xl">
-            DCS Bootcamp 11.0: Python Basics Crash-Course
-        </div>
-        {#if $userId}
-        <ul>
-            {#each pages as page}
-                <li><button on:click={() => goto(page.url)}>{page.title}</button></li>
-            {/each}
-            <li><button on:click={logout}>Logout</button></li>
-        </ul>
-        {:else}
-        <ul>
-            <li><button on:click={() => goto("/login")}>Login</button></li>
-        </ul>
+<div class="bg-black min-h-lvh text-white">
+    <nav class="flex justify-end p-4">
+    {#if $userId}
+        <button on:click={() => goto('/')} class="m-2">Home</button>
+        <button on:click={logout} class="m-2">Logout</button>
+    {:else}
+        <button on:click={() => goto('/login')}>Login</button>
         {/if}
     </nav>
+    <header class="flex flex-col items-center">
+        <h1 class="text-5xl mb-2 font-semibold highlight">DCS Bootcamp 11.0</h1>
+        <div class="text-2xl">Python Basics Crash Course</div>
+        <ul class="flex flex-col m-8">
+        {#each pages as page, index}
+            <button on:click={() => goto(page.url)} class={`my-1 py-1 px-8 rounded-lg text-xl font-semibold hover:bg-stone-800 ${index%2 ? 'highlight' : ''}`}>{page.title}</button>
+        {/each}
+        </ul>
+    </header>
+
+    <slot />
+
+    <footer class="m-2 flex justify-center">Made by Ron Surara 2024</footer>
 </div>
 
-<slot />
+<style>
+    :root {
+        --highlight-color: rgb(195, 160, 79)
+    }
 
-<footer>Made by Ron Surara 2024</footer>
+    .highlight {
+        color: var(--highlight-color);
+    }
+</style>
