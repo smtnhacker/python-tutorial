@@ -21,16 +21,18 @@
     });
 </script>
 
-<div>
+<div class="p-4">
     <nav>
-        <div class="title">
+        <div class="title font-bold text-5xl">
             DCS Bootcamp 11.0: Python Basics Crash-Course
         </div>
+        {#if $userId}
         <ul>
             {#each pages as page}
                 <li><button on:click={() => goto(page.url)}>{page.title}</button></li>
             {/each}
         </ul>
+        {/if}
     </nav>
 </div>
 

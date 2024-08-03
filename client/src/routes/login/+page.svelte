@@ -35,9 +35,9 @@
     }
 </script>
 
-<div>
+<div class="p-4">
     {#if !$userId}
-        <div class="login">
+        <div class="login bg-slate-200 flex flex-col items-center">
             <h1>Login</h1>
             <form on:submit={login}>
                 <label for="username">
