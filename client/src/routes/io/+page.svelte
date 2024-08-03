@@ -64,34 +64,40 @@
     }
 </script>
 
-<div>
-    <div>
-        IO Page
-    </div>
-    <p>In Python, you take input one line at a time. This can be confusing at first which is why here are some common ways to take input. You don't have to know the details on how each works right now. Just familiarize them until you are able to dissect how each works. Note that inputs can be a lot more complex and may need better understanding of python</p>
-    <div>
-        {#each inputItems as {title, code, description, example}}
-            <li>
-                <IoItem title={title} code={code} description={description} example={example} />
-            </li>
-        {/each}
-    </div>
-    <p>A common way of printing in Python is by using the print function. Here are some common ways of printing things.</p>
-    <div>
-        {#each outputItems as {title, code, description, example}}
-            <li>
-                <IoItem title={title} code={code} description={description} example={example} />
-            </li>
-        {/each}
-    </div>
-    <div>
-        <h1>Test Yourself</h1>
-        <button on:click={get_sample}>Generate Problem</button>
-        {@html marked(question)}
-        Show Answer (likely incorrect): <input type="checkbox" bind:checked={showAnswer}>
-        {#if showAnswer}
-            Answer:
-            {@html marked(answer)}
-        {/if}
+<div class="flex justify-center content-stretch">
+    <div class="flex bg-white rounded-2xl w-10/12 text-black">
+        <div></div>
+        <div class="flex flex-col items-center grow">
+            <h2 class="text-5xl my-4 font-semibold text-[var(--red-color)]">I/O</h2>
+            <div class="border-solid border-8 border-black mx-14 mb-14 p-4 rounded-lg">
+                <p>In Python, you take input one line at a time. This can be confusing at first which is why here are some common ways to take input. You don't have to know the details on how each works right now. Just familiarize them until you are able to dissect how each works. Note that inputs can be a lot more complex and may need better understanding of python</p>
+                <div>
+                    {#each inputItems as {title, code, description, example}}
+                        <li>
+                            <IoItem title={title} code={code} description={description} example={example} />
+                        </li>
+                    {/each}
+                </div>
+                <p>A common way of printing in Python is by using the print function. Here are some common ways of printing things.</p>
+                <div>
+                    {#each outputItems as {title, code, description, example}}
+                        <li>
+                            <IoItem title={title} code={code} description={description} example={example} />
+                        </li>
+                    {/each}
+                </div>
+                <div>
+                    <h1>Test Yourself</h1>
+                    <button on:click={get_sample}>Generate Problem</button>
+                    {@html marked(question)}
+                    Show Answer (likely incorrect): <input type="checkbox" bind:checked={showAnswer}>
+                    {#if showAnswer}
+                        Answer:
+                        {@html marked(answer)}
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div></div>
     </div>
 </div>

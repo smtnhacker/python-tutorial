@@ -51,7 +51,8 @@
 
 <style>
     :root {
-        --highlight-color: rgb(195, 160, 79)
+        --highlight-color: rgb(195, 160, 79);
+        --red-color: rgb(178, 34, 34);
     }
 
     .highlight {
