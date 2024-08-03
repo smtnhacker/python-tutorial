@@ -3,6 +3,7 @@ import random
 from dotenv import load_dotenv
 
 import cases.find_intersection
+import cases.mandala
 
 load_dotenv()
 
@@ -217,6 +218,29 @@ async def find_intersection(file: UploadFile = File(...)):
             
         print(scores, flush=True)
         return JSONResponse(content=scores)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Server cannot run code: {e}",
+            headers={"WWW-Authenticate": "Bearer"}
+        )
+
+@app.post("/gen_mandala", responses={200: {"content": {"image/png": {}}}}, response_class=Response)
+async def generate_graph(file: UploadFile = File(...)):
+    content = await file.read()
+
+    source_code = content.decode("utf-8")
+    new_module = load_module_from_code(source_code)
+    try:
+        testcase = random.choice(cases.mandala.testcases)
+        num_rows = len(testcase)
+        num_cols = len(testcase[0])
+        new_pattern = new_module.gen_mandala(num_rows=num_rows, num_cols=num_cols, pattern=testcase)
+        res = {
+            "pattern": "\n".join(new_pattern)
+        }
+        return JSONResponse(content=res)
+        return Response(content=buf.getvalue(), media_type="image/png")
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

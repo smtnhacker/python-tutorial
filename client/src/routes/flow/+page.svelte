@@ -1,6 +1,24 @@
 <script>
-
+    import { SERVER_HOST } from '../../lib/config';
 	import { marked } from "marked";
+
+    let file;
+    let fileInput;
+    let output = '';
+
+    async function uploadFile() {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch(`${SERVER_HOST}/gen_mandala/`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        console.log(result);
+        output = result['pattern'];
+    }
 
 </script>
 <div>
@@ -60,4 +78,17 @@
             <div>{@html marked("```python\nreps = ['miko', 'paolo', 'krisha', 'drei']\ndel reps[0]")}</div>
         </div>
     </div>
+    <div>
+        Activity
+    </div>
+    <div>
+        For this activity, you will need to create a function that generates a mandala pattern (you can search it up). Use the following template, where num_rows is an integer representing the number of rows, num_cols is an integer representing the number of columns, and pattern is a list of strings representing a num_rows by num_cols design.
+        <div>{@html marked("```python\ndef gen_mandala_pattern(num_rows, num_cols, pattern):\n\t#generate pattern\n\treturn new_pattern")}</div>
+    </div>
+        <form on:submit|preventDefault={uploadFile}>
+        <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
+        <button type="submit">Upload</button>
+        <p>Result:</p>
+        <div>{@html marked(`\`\`\`python\n${output}`)}</div>
+    </form>
 </div>
