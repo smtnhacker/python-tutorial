@@ -147,7 +147,14 @@ def find_intersection(line1: Line, line2: Line) -> Point:
 
 <div class="flex justify-center content-stretch">
     <div class="flex bg-white rounded-2xl w-7/12 text-black">
-        <div></div>
+        <div class="relative">
+            <div class="absolute top-4 left-4 text-6xl text-[var(--red-color)]">
+                ♥
+            </div>
+            <div class="absolute bottom-2 left-5 text-5xl text-[var(--red-color)] voyage-bold">
+                K
+            </div>
+        </div>
         <div class="flex flex-col items-center grow">
             <h2 class="text-5xl my-4 voyage-bold text-[var(--red-color)]">Operations</h2>
             <div class="border-solid border-8 border-black montserrat-ital mx-14 mb-14 p-4 rounded-lg">
@@ -195,6 +202,13 @@ def find_intersection(line1: Line, line2: Line) -> Point:
                 </form>
             </div>
         </div>
-        <div></div>
+        <div class="relative">
+            <div class="absolute top-5 right-7 text-5xl text-[var(--red-color)] voyage-bold">
+                K
+            </div>
+            <div class="absolute bottom-2 right-4 text-6xl text-[var(--red-color)]">
+                ♥
+            </div>
+        </div>
     </div>
 </div>
