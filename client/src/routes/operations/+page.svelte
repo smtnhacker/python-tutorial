@@ -145,54 +145,56 @@ def find_intersection(line1: Line, line2: Line) -> Point:
 
 </script>
 
-<div>
-    <div>
-        Operations
-    </div>
-    <div>
-        <div>
-            Basic Operators
+<div class="flex justify-center content-stretch">
+    <div class="flex bg-white rounded-2xl w-7/12 text-black">
+        <div></div>
+        <div class="flex flex-col items-center grow">
+            <h2 class="text-5xl my-4 voyage-bold text-[var(--red-color)]">Operations</h2>
+            <div class="border-solid border-8 border-black montserrat-ital mx-14 mb-14 p-4 rounded-lg">
+                Python has numerous common binary operators. These are usually of the form:
+                <div>{@html marked("`<result> = <operandA> <operator> <operandB>`")}</div>
+                <p class="my-2">
+                    Of course, you can make the equation a bit more complex by having multiple operators in a single line. Just be careful and be mindful of <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence">operator precedence</a> which basically tells the computer in which order the operators will be processed, just liked PEMDAS!
+                </p>
+                <p class="my-2">
+                    The following are some common operators that you might find yourself using. Many of them are just from math. There are other operators that you may see for the first time such as "and" and "or" logical operators, but they will be shown more in detail in the control flow module. For an exhaustive list, refer <a href="https://docs.python.org/3/reference/expressions.html">here</a>.
+                </p>
+                <ul>
+                    {#each examples as example}
+                        <li class="py-4"><OperatorExample 
+                                title={example.title} 
+                                description={example.description} 
+                                examples={example.examples} 
+                            />
+                        </li>
+                    {/each}
+                </ul>
+                <h1 class="font-semibold text-xl">Test Yourself</h1>
+                 <p>
+                    To further help in understanding operators, you can make a function that takes in a single integer x and returns a valid number and submit the function. A graph will be generated plotting the results of the function for x values 1 to 100. Use the following template:
+                </p>
+                <div class="pl-2">{@html marked("```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)")}</div>
+                <form on:submit|preventDefault={uploadFile} class="my-4">
+                    <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
+                    <button type="submit" class="bg-slate-200 px-3 py-1 rounded-lg">Upload</button>
+                    {#if output}
+                    <p>Result:
+                        <img src={output} alt="Resulting Graph">
+                    </p>
+                    {/if}
+                </form>
+                <p class="my-2">
+                    Typically, algorithms are not written in isolation. Instead, they are made to solve a particular problem. For this activity, you must solve the line intersection problem by using the following formula and filling up the following template:
+                </p>
+                <div>{@html marked("Given lines of the form `a1x+b1y+c1=0` and `a2x+b2y+c2=0`, assuming that an intersection exists, the formula for the intersection is `x=(b1c2-b2c1)/(a1b2-a2b1), y=(c1a2-c2a1)/(a1b2-a2b1)`. This may not be the best way for solving this problem, but fill in the following template to try and get the intersection of two lines.")}</div>
+                <div>{@html marked(`\`\`\`python\n${line_intersection_template}`)}</div>
+                <form on:submit|preventDefault={uploadLine}>
+                    <input type="file" bind:this={lineFileInput} on:change={() => lineFile = lineFileInput.files[0]} />
+                    <button type="submit" class="bg-slate-200 px-3 py-1 rounded-lg">Submit</button>
+                    <p>Score: {accuracy * 100}</p>
+                </form>
+            </div>
         </div>
-        <div>
-            Python has numerous common binary operators. These are usually of the form:
-            <div>{@html marked("`<result> = <operandA> <operator> <operandB>`")}</div>
-            <p>
-                Of course, you can make the equation a bit more complex by having multiple operators in a single line. Just be careful and be mindful of <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence">operator precedence</a> which basically tells the computer in which order the operators will be processed, just liked PEMDAS!
-            </p>
-            <p>
-                The following are some common operators that you might find yourself using. Many of them are just from math. There are other operators that you may see for the first time such as "and" and "or" logical operators, but they will be shown more in detail in the control flow module. For an exhaustive list, refer <a href="https://docs.python.org/3/reference/expressions.html">here</a>.
-            </p>
-            <ul>
-                {#each examples as example}
-                    <li><OperatorExample 
-                            title={example.title} 
-                            description={example.description} 
-                            examples={example.examples} 
-                        />
-                    </li>
-                {/each}
-            </ul>
-        </div>
+        <div></div>
     </div>
-    <p>
-        To further help in understanding operators, you can make a function that takes in a single integer x and returns a valid number and submit the function. A graph will be generated plotting the results of the function for x values 1 to 100. Use the following template:a
-    </p>
-    <div>{@html marked("```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)")}</div>
-    <form on:submit|preventDefault={uploadFile}>
-        <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
-        <button type="submit">Upload</button>
-        <p>Result:
-            <img src={output} alt="Resulting Graph">
-        </p>
-    </form>
-    <p>
-        Typically, algorithms are not written in isolation. Instead, they are made to solve a particular problem. For this activity, you must solve the line intersection problem by using the following formula and filling up the following template:
-    </p>
-    <div>{@html marked("Given lines of the form `a1x+b1y+c1=0` and `a2x+b2y+c2=0`, assuming that an intersection exists, the formula for the intersection is `x=(b1c2-b2c1)/(a1b2-a2b1), y=(c1a2-c2a1)/(a1b2-a2b1)`. This may not be the best way for solving this problem, but fill in the following template to try and get the intersection of two lines.")}</div>
-    <div>{@html marked(`\`\`\`python\n${line_intersection_template}`)}</div>
-    <form on:submit|preventDefault={uploadLine}>
-        <input type="file" bind:this={lineFileInput} on:change={() => lineFile = lineFileInput.files[0]} />
-        <button type="submit">Upload</button>
-        <p>Result: {accuracy}</p>
-    </form>
 </div>

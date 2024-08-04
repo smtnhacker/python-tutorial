@@ -7,9 +7,10 @@
 </script>
 
 <div>
-    <div>{title}</div>
-    <div>Description: {description}</div>
-    <div>Examples: 
+    <div class="font-semibold">{title}</div>
+    <div class="pl-4">Description: {description}</div>
+    <div class="font-semibold highlight">Examples: </div>
+    <div class="pl-4">
         {#each examples as example}
             {@html marked(`\`${example}\`, `)}
         {/each}
