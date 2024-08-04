@@ -78,7 +78,7 @@
                     </p>
                     <div class="pl-4">{@html marked("```python\nprint(1)\nprint(4)\nprint(9)\n# ...\nprint(1000000)\n")}</div>
                     <p>
-                        If we were to print square of numbers from 1 to 1000000, it would still be possible however this method is highly impractical. In fact, this cannot work for certain scenarios, such as the 2nd scenario. Think about it. How many lines of input do we make?
+                        If we were to print square of numbers from 1 to 1000000, it would still be possible however this method is highly impractical. How about printing all numbers from 1 to N, where N is an input? In fact, this cannot work for certain scenarios, such as the 2nd scenario. Think about it. How many lines of input do we make?
                     </p>
                     <div class="pl-4">{@html marked("```python\nn = int(input())\ninput_1 = input()\ninput_2 = input()\ninput_3 = input()\n# how many more lines? What if n is only 1? What if n is 1000?")}</div>
                     <p>
