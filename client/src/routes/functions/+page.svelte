@@ -1,5 +1,6 @@
 <script>
     import { SERVER_HOST } from '../../lib/config';
+    import Code from '../../lib/Code.svelte';
 	import { marked } from 'marked';
 
     let file;
@@ -61,7 +62,7 @@ def swap(a, b):
                 </div>
                 <h1 class="font-semibold text-xl">Test Yourself</h1>
                 <p>For this activity, since we have not yet covered other parts of Python, you'll just be tasked with defining a function that returns a proper question. It should follow the following template:</p>
-                <div>{@html marked("```python\ndef ask_question():\n\t# function logic\n\treturn \"Some question?\"")}</div>
+                <Code code={"```python\ndef ask_question():\n\t# function logic\n\treturn \"Some question?\""} />
                 <div class="mt-4">
                     <form on:submit|preventDefault={uploadFile}>
                         <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />

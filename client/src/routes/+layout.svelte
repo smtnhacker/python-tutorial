@@ -23,6 +23,8 @@
     function logout() {
         $userId = ''
     }
+
+
 </script>
 
 <div class="bg-black min-h-lvh text-white main">

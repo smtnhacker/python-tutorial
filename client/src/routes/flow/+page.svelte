@@ -1,6 +1,7 @@
 <script>
     import { SERVER_HOST } from '../../lib/config';
 	import { marked } from "marked";
+    import Code from '../../lib/Code.svelte';
 
     let file;
     let fileInput;
@@ -126,7 +127,7 @@
             <h1 class="font-semibold text-xl mt-2">Test Yourself</h1>
             <div>
                 For this activity, you will need to create a function that generates a mandala pattern (you can search it up). Use the following template, where num_rows is an integer representing the number of rows, num_cols is an integer representing the number of columns, and pattern is a list of strings representing a num_rows by num_cols design.
-                <div>{@html marked("```python\ndef gen_mandala_pattern(num_rows, num_cols, pattern):\n\t#generate pattern\n\treturn new_pattern")}</div>
+                <Code code={"```python\ndef gen_mandala_pattern(num_rows, num_cols, pattern):\n\t#generate pattern\n\treturn new_pattern"} />
             </div>
                 <form on:submit|preventDefault={uploadFile} class="mt-4">
                     <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />

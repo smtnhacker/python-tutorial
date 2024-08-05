@@ -1,6 +1,7 @@
 <script>
     import { marked } from 'marked'
     import { SERVER_HOST } from '../../lib/config';
+    import Code from '../../lib/Code.svelte';
     import OperatorExample from './OperatorExample.svelte';
 
     let examples = [
@@ -180,7 +181,7 @@ def find_intersection(line1: Line, line2: Line) -> Point:
                  <p>
                     To further help in understanding operators, you can make a function that takes in a single integer x and returns a valid number and submit the function. A graph will be generated plotting the results of the function for x values 1 to 100. Use the following template:
                 </p>
-                <div class="pl-2">{@html marked("```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)")}</div>
+                <Code code={"```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)"} />
                 <form on:submit|preventDefault={uploadFile} class="my-4">
                     <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
                     <button type="submit" class="bg-[var(--red-color)] text-white  px-3 py-1 rounded-lg">Upload</button>
@@ -194,7 +195,7 @@ def find_intersection(line1: Line, line2: Line) -> Point:
                     Typically, algorithms are not written in isolation. Instead, they are made to solve a particular problem. For this activity, you must solve the line intersection problem by using the following formula and filling up the following template:
                 </p>
                 <div>{@html marked("Given lines of the form `a1x+b1y+c1=0` and `a2x+b2y+c2=0`, assuming that an intersection exists, the formula for the intersection is `x=(b1c2-b2c1)/(a1b2-a2b1), y=(c1a2-c2a1)/(a1b2-a2b1)`. This may not be the best way for solving this problem, but fill in the following template to try and get the intersection of two lines.")}</div>
-                <div>{@html marked(`\`\`\`python\n${line_intersection_template}`)}</div>
+                <Code code={`\`\`\`python\n${line_intersection_template}`} />
                 <form on:submit|preventDefault={uploadLine}>
                     <input type="file" bind:this={lineFileInput} on:change={() => lineFile = lineFileInput.files[0]} />
                     <button type="submit" class="bg-[var(--red-color)] text-white px-3 py-1 rounded-lg">Submit</button>
