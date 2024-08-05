@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     import { marked } from 'marked'
     import { SERVER_HOST } from '../../lib/config';
     import Code from '../../lib/Code.svelte';
@@ -212,4 +213,9 @@ def find_intersection(line1: Line, line2: Line) -> Point:
             </div>
         </div>
     </div>
+</div>
+
+<div class="w-screen flex justify-center mt-4">
+    <button on:click={() => goto('/functions')} class="bg-[var(--red-color)] text-white  px-12 py-1 rounded-lg mx-2">Prev</button>
+    <button on:click={() => goto('/flow')} class="bg-[var(--red-color)] text-white  px-12 py-1 rounded-lg mx-2">Next</button>
 </div>

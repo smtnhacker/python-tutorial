@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
 	import { marked } from 'marked';
     import { SERVER_HOST } from '../../lib/config';
     import IoItem from './IOItem.svelte';
@@ -123,4 +124,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="w-screen flex justify-center mt-4">
+    <button disabled class="bg-slate-400 text-black px-12 py-1 rounded-lg mx-2">Prev</button>
+    <button on:click={() => goto('/functions')} class="bg-[var(--red-color)] text-white  px-12 py-1 rounded-lg mx-2">Next</button>
 </div>
