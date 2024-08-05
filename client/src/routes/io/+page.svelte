@@ -98,7 +98,7 @@
                     <p>
                         Here is ChatGPT to help you with practicing. Just click the button below and ChatGPT will try its best to make problems for you. Take note that AI is still very limited in tasks such as this so don't expect to be able to use AI for non-simple tasks.
                     </p>
-                    <button on:click={get_sample} class="bg-slate-200 px-3 py-1 rounded-lg mt-2">Generate Problem</button>
+                    <button on:click={get_sample} class="bg-[var(--red-color)] text-white px-3 py-1 rounded-lg mt-2">Generate Problem</button>
                     <div class="pl-8">
                         <div>
                             {@html marked(question)}

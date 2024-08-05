@@ -183,7 +183,7 @@ def find_intersection(line1: Line, line2: Line) -> Point:
                 <div class="pl-2">{@html marked("```python\ndef compute_y(x):\n\treturn 2*x (or whatever you want to compute)")}</div>
                 <form on:submit|preventDefault={uploadFile} class="my-4">
                     <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
-                    <button type="submit" class="bg-slate-200 px-3 py-1 rounded-lg">Upload</button>
+                    <button type="submit" class="bg-[var(--red-color)] text-white  px-3 py-1 rounded-lg">Upload</button>
                     {#if output}
                     <p>Result:
                         <img src={output} alt="Resulting Graph">
@@ -197,7 +197,7 @@ def find_intersection(line1: Line, line2: Line) -> Point:
                 <div>{@html marked(`\`\`\`python\n${line_intersection_template}`)}</div>
                 <form on:submit|preventDefault={uploadLine}>
                     <input type="file" bind:this={lineFileInput} on:change={() => lineFile = lineFileInput.files[0]} />
-                    <button type="submit" class="bg-slate-200 px-3 py-1 rounded-lg">Submit</button>
+                    <button type="submit" class="bg-[var(--red-color)] text-white px-3 py-1 rounded-lg">Submit</button>
                     <p>Score: {accuracy * 100}</p>
                 </form>
             </div>

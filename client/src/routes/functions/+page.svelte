@@ -65,7 +65,7 @@ def swap(a, b):
                 <div class="mt-4">
                     <form on:submit|preventDefault={uploadFile}>
                         <input type="file" bind:this={fileInput} on:change={() => file = fileInput.files[0]} />
-                        <button type="submit" class="bg-slate-200 px-3 py-1 rounded-lg">Upload</button>
+                        <button type="submit" class="bg-[var(--red-color)] text-white px-3 py-1 rounded-lg">Upload</button>
                     </form>
                     {#if output}
                     <p>ChatGPT:</p>
