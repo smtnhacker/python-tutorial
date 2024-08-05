@@ -37,11 +37,13 @@
     <header class="flex flex-col items-center">
         <h1 class="text-5xl mb-2 voyage-bold highlight">DCS Bootcamp 11.0</h1>
         <div class="text-xl montserrat-ital">Python Basics Crash Course</div>
+        {#if $userId}
         <ul class="flex flex-col m-8">
         {#each pages as page, index}
             <button on:click={() => goto(page.url)} class={`my-1 py-1 px-8 rounded-lg text-xl font-semibold hover:bg-stone-800 ${index%2 ? 'highlight' : ''}`}>{page.title}</button>
         {/each}
         </ul>
+        {/if}
     </header>
 
     <slot />

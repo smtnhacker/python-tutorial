@@ -37,18 +37,17 @@
 
 <div class="p-4">
     {#if !$userId}
-        <div class="login bg-slate-200 flex flex-col items-center">
-            <h1>Login</h1>
-            <form on:submit={login}>
-                <label for="username">
+        <div class="login flex my-12 flex-col items-center">
+            <form on:submit={login} class="flex flex-col">
+                <label for="username" class="my-2 flex">
                     Username:
-                    <input type="text" name="username" bind:value={username}>
+                    <input type="text" name="username" bind:value={username} class="text-black px-2 rounded-md grow mx-2">
                 </label>
-                <label for="password">
+                <label for="password" class="flex">
                     Key:
-                    <input type="text" name="password" bind:value={password}>
+                    <input type="text" name="password" bind:value={password} class="text-black px-2 rounded-md grow mx-2">
                 </label>
-                <input type="submit" value="submit">
+                <input type="submit" value="Submit" class="bg-slate-200 px-3 py-1 rounded-lg cursor-pointer mt-8 bg-[var(--red-color)]">
             </form>
         </div>
     {:else}
