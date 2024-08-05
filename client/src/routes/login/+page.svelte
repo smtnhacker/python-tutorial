@@ -47,7 +47,7 @@
                     Key:
                     <input type="text" name="password" bind:value={password} class="text-black px-2 rounded-md grow mx-2">
                 </label>
-                <input type="submit" value="Submit" class="bg-slate-200 px-3 py-1 rounded-lg cursor-pointer mt-8 bg-[var(--red-color)]">
+                <input type="submit" value="Submit" class="px-3 py-1 rounded-lg cursor-pointer mt-8 bg-[var(--red-color)]">
             </form>
         </div>
     {:else}
