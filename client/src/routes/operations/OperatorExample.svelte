@@ -12,7 +12,7 @@
     <div class="font-semibold highlight">Examples: </div>
     <div class="pl-4">
         {#each examples as example}
-            {@html marked(`\`${example}\`, `)}
+            {@html marked(`\`${example}\``)}
         {/each}
     </div>
 </div>
