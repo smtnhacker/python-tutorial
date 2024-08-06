@@ -18,6 +18,12 @@
             example: "`100000000000000000000`"
         },
         {
+            title: "Fixed-Amount Multiple Strings",
+            code: "`firstname, lastname = input().split()`",
+            description: "This takes in a fixed number of space-separated strings and saves them into the same number of variables.",
+            example: "`John Doe`"
+        },
+        {
             title: "Fixed-Amount Multiple Integer",
             code: "`a, b, c = map(int, input().split())`",
             description: "This takes in a fixed number of integers and saves them into the same number of variables.",
@@ -28,6 +34,12 @@
             code: "`numbers = list(map(int, input().split()))`",
             description: "This takes in an \"unknown\" amount of integers and saves them into a single list variable.",
             example: "`1 2 3 4 5 6 7 8 9`"
+        },
+        {
+            title: "Comma-Separated Words",
+            code: "`words = input().split(', ')`",
+            description: "This takes in an unknown number of words, separated by comma and space and saves them into a single list variable.",
+            example: "`hello, world, and, freshies`"
         }
     ]
 
@@ -43,6 +55,12 @@
             code: "`print(a, b, c)`",
             description: "This will print the variables with space between them added automatically.",
             example: "If `a=1,b=2,c=3`, then `print(a,b,c)` will result to `1 2 3`"
+        },
+        {
+            title: "Comma-separated Variables",
+            code: "`print(a, b, c, sep=',')`",
+            description: "This will print the variables with commas between them.",
+            example: "If `a=9,b=8,c=7`, then `print(a,b,c,sep=',') will result to `1,2,3`"
         },
         {
             title: "List",
