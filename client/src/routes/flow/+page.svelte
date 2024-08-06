@@ -118,7 +118,7 @@
                     <p>
                         And add new elements at the list!
                     </p>
-                    <div class="pl-4">{@html marked("```python\nreps = ['miko', 'paolo', 'krisha', 'drei']\nreps.push('kung sino iboto niyo')")}</div>
+                    <div class="pl-4">{@html marked("```python\nreps = ['miko', 'paolo', 'krisha', 'drei']\nreps.append('kung sino iboto niyo')")}</div>
                     <p>
                         And delete elements from the list!
                     </p>
